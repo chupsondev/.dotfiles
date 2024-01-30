@@ -1,0 +1,10 @@
+[commit]
+	gpgsign = true
+[user]
+	email = chupson@chupson.dev
+	name = chupson
+	signingKey = FB8854703F41CF7B344907E5C787DF2515F8E0E6
+[core]
+	editor = nvim
+[init]
+	defaultBranch = master
