@@ -1,4 +1,5 @@
 -- This config is based on the amazing [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -95,8 +96,7 @@ require('lazy').setup({
             "nvim-lua/plenary.nvim",
         },
     },
-    -- require 'chupson.plugins.debug',
-    -- mason dap plugin was causing hellishly long startup times when on tmux and I wasn't using it anyway so I decided to ignore that issue
+    require 'chupson.plugins.debug',
 
 }, {})
 
