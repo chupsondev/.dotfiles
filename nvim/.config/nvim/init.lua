@@ -1,3 +1,4 @@
+-- This config is based on the amazing [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
