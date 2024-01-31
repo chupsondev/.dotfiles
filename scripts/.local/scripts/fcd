@@ -2,9 +2,10 @@
 # A script for cd'ing into a directory selected by fuzzy finding in a set of directories that I store all of my important files in.
 #
 # This script should be sourced in the ~/.zshrc. It is not by itself executable, it creates a function.
+# vim:ft=zsh
 
 function fcd {
-    directories=( $HOME/dev/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ )
+    directories=( $HOME/dev/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ $HOME/.dotfiles )
     
     picked_dir=$({
         fd --no-ignore --hidden --absolute-path --follow --type directory \
