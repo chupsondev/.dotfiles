@@ -46,7 +46,7 @@ setopt extended_history
 setopt share_history
 
 # Keymappings
-bindkey -s "^f" 'tmux-session-picker\n'
+bindkey -s "^f" 'tmux-session-manager\n'
 
 
 COWPATH="$HOME/.cowsay/cowfiles"

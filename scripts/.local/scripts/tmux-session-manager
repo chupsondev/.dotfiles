@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+workspaces=$(cat $HOME/.local/scripts/workspaces)
+
+function indicate_existing_sessions {
+    local IFS=$'\n'    
+    local lines=( $workspaces )
+    for (( i=0; i<${#lines[@]}; i++ )); do
+        session_name=$(echo "${lines[i]}" |  cut -d ' ' -f 1 | xargs)
+        if tmux has -t=$session_name &> /dev/null; then
+            lines[i]="${lines[i]} (exists)"
+        fi
+    done
+    workspaces="${lines[@]#\$'\n'}"
+}
+
+create_session() {
+    name=$(echo "$1" |  cut -d' ' -f 1 | xargs)
+    path=$(echo "$1" | cut -d " " -f 2 | sed -n 's/.*(\(.*\)).*/\1/p')
+    template=$(echo "$1" | sed -n 's/.*\[\(.*\)\].*/\1/p')
+
+    if [[ -n "$template" ]]; then
+        "create_${template}" "$name" "$path"
+    else
+        eval "tmux new-session -d -s $name -c $path"
+    fi
+}
+
+create_dev() {
+    local path="$2"
+    eval "tmux new-session -ds $1 -c $path"
+    eval "tmux splitw -h -t $1:1.1 -c $path"
+    eval "tmux selectl -t $1:1.1 main-vertical"
+    eval "tmux splitw -t $1:1.1 -c $path"
+    eval "tmux resize-pane -t $1:1.1 -y 65%"
+}
+
+
+indicate_existing_sessions
+
+# I use the ansi flag because maybe I'll color the workspace lines sometime
+selected=$(echo "$workspaces" | fzf-tmux -p --ansi)
+
+
+if ! tmux has -t=$selected_session_name &> /dev/null; then
+    create_session "$selected"
+fi
+
+selected_session_name=$(echo "$selected" |  cut -d' ' -f 1 | xargs)
+if ! { [[ $TERM == 'screen'* ]] && [[ -n "$TMUX" ]] }; then
+    tmux attach-session -t "$selected_session_name";
+else
+    tmux switch-client -t "$selected_session_name";
+fi
