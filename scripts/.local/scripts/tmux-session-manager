@@ -46,11 +46,12 @@ if [[ -z "$selected" ]]; then
 fi
 
 
+selected_session_name=$(echo "$selected" |  cut -d' ' -f 1 | xargs)
+
 if ! tmux has -t=$selected_session_name &> /dev/null; then
     create_session "$selected"
 fi
 
-selected_session_name=$(echo "$selected" |  cut -d' ' -f 1 | xargs)
 if ! { [[ $TERM == 'screen'* ]] && [[ -n "$TMUX" ]] }; then
     tmux attach-session -t "$selected_session_name";
 else
