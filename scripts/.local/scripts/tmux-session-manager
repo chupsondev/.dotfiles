@@ -41,6 +41,10 @@ indicate_existing_sessions
 # I use the ansi flag because maybe I'll color the workspace lines sometime
 selected=$(echo "$workspaces" | fzf-tmux -p --ansi)
 
+if [[ -z "$selected" ]]; then
+    exit 0
+fi
+
 
 if ! tmux has -t=$selected_session_name &> /dev/null; then
     create_session "$selected"
