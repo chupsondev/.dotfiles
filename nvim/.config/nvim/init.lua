@@ -18,9 +18,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    -- the one and only tpope
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
-    'tpope/vim-sleuth',
+    'tpope/vim-vinegar',
+    'tpope/vim-surround',
+
     'jiangmiao/auto-pairs',
 
     {
@@ -447,6 +450,8 @@ cmp.setup {
         completeopt = 'menu,menuone,noinsert,noselect',
     },
     mapping = cmp.mapping.preset.insert {
+        ['<C-n'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-p'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
