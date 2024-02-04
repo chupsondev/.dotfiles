@@ -117,6 +117,33 @@ require('lazy').setup({
 
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*",
+        lazy = true,
+        event = {
+          -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+          -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+          "BufReadPre " .. vim.fn.expand "~" .. "/Obsidian/**.md",
+          "BufNewFile " .. vim.fn.expand "~" .. "/Obsidian/**/.md",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "main",
+                    path = "~/Obsidian/",
+                },
+                {
+                    name = "work",
+                    path = "~/vaults/work",
+                },
+            },
+        },
+    }
+
     -- require 'chupson.plugins.debug',
 
 }, {})
@@ -124,6 +151,7 @@ require('lazy').setup({
 -- Colors
 vim.o.termguicolors = true
 vim.o.background = "dark"
+
 require("gruvbox").setup({
     terminal_colors = true,
     undercurl = true,
@@ -146,7 +174,7 @@ require("gruvbox").setup({
     palette_overrides = {},
     overrides = {},
     dim_inactive = false,
-    transparent_mode = false,
+    transparent_mode = true,
 })
 vim.cmd.colorscheme("gruvbox")
 
@@ -181,6 +209,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete" })
 
 
 -- LazyGit
@@ -295,7 +325,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 
 vim.defer_fn(function()
     require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'bash' },
+        ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'bash', 'markdown', 'markdown_inline' },
 
         auto_install = false,
         sync_install = false,
@@ -509,3 +539,7 @@ vim.keymap.set("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>")
 vim.keymap.set("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>")
 vim.keymap.set("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>")
 vim.keymap.set("n", "<leader>$", ":BufferLineGoToBuffer -1<CR>")
+
+
+-- Obsidian.nvim
+vim.opt.conceallevel = 1
