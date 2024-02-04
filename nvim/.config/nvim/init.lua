@@ -399,10 +399,18 @@ local servers = {
     clangd = {},
     pylsp = {
         pylsp = {
+            configurationSources = { "pycodestyle", "flake8" },
             plugins = {
+                flake8 = {
+                    enabled = true,
+                    ignore  = { "F401", "F841" },
+                    maxLineLength = 120,
+                },
                 pycodestyle = {
-                    maxLineLength = 120
-                }
+                    maxLineLength = 120,
+                    ignore = {"F841"},
+                },
+                pyflakes = { enabled = false },
             }
         }
     },
