@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-workspaces=$(cat $HOME/.local/scripts/workspaces)
+WORKSPACES_FILE="$HOME/.local/scripts/workspaces"
+workspaces=$(cat $WORKSPACES_FILE)
 
 function indicate_existing_sessions {
     local IFS=$'\n'    
@@ -35,6 +36,28 @@ create_dev() {
     eval "tmux resize-pane -t $1:1.1 -y 65%"
 }
 
+
+if [[ $# -ge 1 ]]; then
+    if [[ "$1" != "new" ]] || [[ $# -lt 2 ]]; then
+        echo "usage: tmux-session-manager new [path] -t=[template]"
+        exit 1
+    fi
+
+    
+    path=$(realpath "$2" | sed "s+$HOME+~+g")
+
+    template=$(echo "$3" | cut -d'=' -f 2 | xargs)
+    entry="$(basename $path) ($path)"
+
+    if [[ -n "$template" ]]; then 
+        entry+=" [$template]"
+    fi
+
+    if ! grep -Fxq "$entry" $WORKSPACES_FILE; then
+        echo "$entry" >> $WORKSPACES_FILE
+    fi
+    exit 0
+fi
 
 indicate_existing_sessions
 
