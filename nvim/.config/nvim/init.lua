@@ -54,6 +54,19 @@ require('lazy').setup({
         config = true,
     },
 
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+
+    {
+        "rebelot/kanagawa.nvim",
+        priority = 1000,
+        opts = {},
+    },
+
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
     {
@@ -104,7 +117,7 @@ require('lazy').setup({
 
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
-    require 'chupson.plugins.debug',
+    -- require 'chupson.plugins.debug',
 
 }, {})
 
