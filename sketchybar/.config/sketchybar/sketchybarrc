@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+source "$HOME/.config/sketchybar/colors.sh"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins/"
+ITEMS_DIR="$HOME/.config/sketchybar/items/"
+
+ICON_FONT="SF Symbols"
+LABEL_FONT="JetBrainsMono Nerd Font"
+
+PADDING=4
+
+sketchybar --bar    height=30           \
+                    display=main        \
+                    color=$BAR_COLOR    \
+                    shadow=off          \
+                    position=top        \
+                    sticky=on           \
+                    padding_right=10     \
+                    padding_left=10      \
+                    y_offset=0          \
+                    notch_width=220          \
+
+sketchybar --default    updates=when_shown                              \
+                        icon.font="$ICON_FONT:SemiBold:13:0"            \
+                        label.font="$LABEL_FONT:SemiBold:13:0"          \
+                        icon.padding_left=$PADDING                      \
+                        icon.padding_right=$PADDING                     \
+                        label.padding_left=$PADDING                     \
+                        label.padding_right=$PADDING                    \
+                        label.color=$LABEL_COLOR                        \
+
+# left 
+source "$ITEMS_DIR/spaces.sh"
+source "$ITEMS_DIR/front_app.sh"
+
+# center
+source "$ITEMS_DIR/clock.sh"
+source "$ITEMS_DIR/date.sh"
+
+# right
+source "$ITEMS_DIR/wifi.sh"
+source "$ITEMS_DIR/battery.sh"
+source "$ITEMS_DIR/volume.sh"
+source "$ITEMS_DIR/cpu.sh"
+
+
+sketchybar --hotload on
+
+sketchybar --update
+
+echo "sketchybar conf loaded"
+
