@@ -48,25 +48,6 @@ require('lazy').setup({
 
     { 'folke/which-key.nvim',                opts = {} },
 
-    {
-        'ellisonleao/gruvbox.nvim',
-        priority = 1000,
-        config = true,
-    },
-
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
-
-    {
-        "rebelot/kanagawa.nvim",
-        priority = 1000,
-        opts = {},
-    },
-
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
     {
@@ -142,40 +123,16 @@ require('lazy').setup({
                 },
             },
         },
-    }
+    },
 
     -- require 'chupson.plugins.debug',
+    require "chupson.plugins.colors",
 
 }, {})
 
--- Colors
+-- Colors (per scheme configuration in colors.lua)
 vim.o.termguicolors = true
 vim.o.background = "dark"
-
-require("gruvbox").setup({
-    terminal_colors = true,
-    undercurl = true,
-    underline = true,
-    bold = false,
-    italic = {
-        strings = false,
-        emphasis = true,
-        comments = true,
-        operators = false,
-        folds = true,
-    },
-    strikethrough = true,
-    invert_selection = false,
-    invert_signs = false,
-    invert_tabline = false,
-    invert_intend_guides = false,
-    inverse = true, -- invert background for search, diffs, statuslines and errors
-    contrast = "",  -- can be "hard", "soft" or empty string
-    palette_overrides = {},
-    overrides = {},
-    dim_inactive = false,
-    transparent_mode = true,
-})
 vim.cmd.colorscheme("gruvbox")
 
 
