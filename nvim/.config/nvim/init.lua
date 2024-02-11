@@ -163,8 +163,8 @@ vim.o.completeopt = 'menuone,noselect'
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('n', '<leader>p', '"0p')
-vim.keymap.set('n', '<leader>P', '"0p')
+vim.keymap.set("n", "<leader>p", "\"0p")
+vim.keymap.set("n", "<leader>P", "\"0P")
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -176,7 +176,7 @@ vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete" })
 vim.keymap.set('n', '<leader>gg', ":LazyGit<CR>", { desc = 'Open LazyGit' })
 
 -- NERDTree
-vim.keymap.set('n', '<leader>pv', ":Ex<CR>", { desc = 'Open netrw' })
+vim.keymap.set('n', '<leader>ne', ":Ex<CR>", { desc = '[N]etrw [E]xplore', silent = true })
 
 -- dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
