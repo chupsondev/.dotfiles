@@ -3,7 +3,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -163,6 +162,9 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+vim.keymap.set('n', '<leader>p', '"0p')
+vim.keymap.set('n', '<leader>P', '"0p')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -460,10 +462,11 @@ cmp.setup {
         completeopt = 'menu,menuone,noinsert,noselect',
     },
     mapping = cmp.mapping.preset.insert {
-        ['<C-n'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-p'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<C-Space>'] = cmp.mapping.complete {},
         ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
@@ -498,5 +501,3 @@ vim.keymap.set("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>")
 vim.keymap.set("n", "<leader>$", ":BufferLineGoToBuffer -1<CR>")
 
 
--- Obsidian.nvim
-vim.opt.conceallevel = 1
