@@ -160,6 +160,8 @@ vim.o.signcolumn = 'yes'
 
 vim.o.completeopt = 'menuone,noselect'
 
+vim.o.spell = true
+
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
