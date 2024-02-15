@@ -23,8 +23,6 @@ require('lazy').setup({
     'tpope/vim-vinegar',
     'tpope/vim-surround',
 
-    'jiangmiao/auto-pairs',
-
     {
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -86,12 +84,12 @@ require('lazy').setup({
         build = ':TSUpdate',
     },
 
-    {
-        "kdheepak/lazygit.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
+    -- {
+    --     "kdheepak/lazygit.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    -- },
 
     { 'wakatime/vim-wakatime', lazy = false },
 
@@ -132,11 +130,14 @@ require('lazy').setup({
 -- Colors (per scheme configuration in colors.lua)
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("kanagawa")
 
 
 vim.o.hlsearch = false
 vim.o.incsearch = true
+
+vim.wo.cursorline = true
+vim.wo.cursorlineopt = "number"
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -153,7 +154,7 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
-vim.o.scrolloff = 10
+vim.o.scrolloff = 5
 
 vim.o.signcolumn = 'yes'
 
@@ -172,10 +173,6 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete" })
-
-
--- LazyGit
-vim.keymap.set('n', '<leader>gg', ":LazyGit<CR>", { desc = 'Open LazyGit' })
 
 -- NERDTree
 vim.keymap.set('n', '<leader>ne', ":Ex<CR>", { desc = '[N]etrw [E]xplore', silent = true })

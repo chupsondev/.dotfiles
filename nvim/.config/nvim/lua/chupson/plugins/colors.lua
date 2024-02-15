@@ -1,7 +1,7 @@
 return {
     {
         'ellisonleao/gruvbox.nvim',
-        lazy = true,
+        lazy = false,
         priority = 1000,
         opts = {
             terminal_colors = true,
@@ -31,18 +31,18 @@ return {
 
     {
         "folke/tokyonight.nvim",
-        lazy = true,
+        lazy = false,
         priority = 1000,
         opts = {},
     },
 
     {
         "rebelot/kanagawa.nvim",
-        lazy = true,
+        lazy = false,
         priority = 1000,
         opts = {
-            transparent = true,
-            background = { dark = "wave", light = "lotus" }
+            transparent = false,
+            background = { dark = "dragon", light = "lotus" }
         },
     },
     {
@@ -58,7 +58,7 @@ return {
         "rose-pine/neovim",
         name = "rose-pine",
         priority = 1000,
-        lazy = true,
+        lazy = false,
         opts = {
             styles = { transparency = true }
         }
