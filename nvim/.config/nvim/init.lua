@@ -24,6 +24,12 @@ require('lazy').setup({
     'tpope/vim-surround',
 
     {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {}
+    },
+
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
             { 'williamboman/mason.nvim', config = true },
