@@ -65,7 +65,7 @@ require('lazy').setup({
         },
     },
 
-    { 'numToStr/Comment.nvim', opts = {} },
+    { 'numToStr/Comment.nvim',   opts = {} },
 
     {
         'nvim-telescope/telescope.nvim',
@@ -97,19 +97,19 @@ require('lazy').setup({
     --     },
     -- },
 
-    { 'wakatime/vim-wakatime', lazy = false },
+    { 'wakatime/vim-wakatime',   lazy = false },
 
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+    { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
 
     {
         "epwalsh/obsidian.nvim",
         version = "*",
         lazy = true,
         event = {
-          -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-          -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-          "BufReadPre " .. vim.fn.expand "~" .. "/Obsidian/**.md",
-          "BufNewFile " .. vim.fn.expand "~" .. "/Obsidian/**/.md",
+            -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+            -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+            "BufReadPre " .. vim.fn.expand "~" .. "/Obsidian/**.md",
+            "BufNewFile " .. vim.fn.expand "~" .. "/Obsidian/**/.md",
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -120,10 +120,11 @@ require('lazy').setup({
                     name = "main",
                     path = "~/Obsidian/",
                 },
-                {
-                    name = "work",
-                    path = "~/vaults/work",
-                },
+            },
+            disable_frontmatter = true,
+            completion = {
+                prepend_note_id = false,
+                prepend_note_path = true,
             },
         },
     },
@@ -168,6 +169,17 @@ vim.o.signcolumn = 'yes'
 vim.o.completeopt = 'menuone,noselect'
 
 vim.o.spell = true
+
+-- Set conceal level for obsidian.nvim, only in markdown files
+local markdown_settings_group = vim.api.nvim_create_augroup('MarkdownSettings', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = "markdown",
+    callback = function ()
+        vim.cmd[[setlocal syntax=markdown]]
+        vim.cmd[[setlocal conceallevel=1]]
+    end,
+    group = markdown_settings_group,
+})
 
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -289,7 +301,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 
 vim.defer_fn(function()
     require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'bash', 'markdown', 'markdown_inline' },
+        ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'bash' },
 
         auto_install = false,
         sync_install = false,
@@ -411,13 +423,13 @@ local servers = {
             configurationSources = { "pycodestyle", "flake8" },
             plugins = {
                 flake8 = {
-                    enabled = true,
-                    ignore  = { "F401", "F841" },
+                    enabled       = true,
+                    ignore        = { "F401", "F841" },
                     maxLineLength = 120,
                 },
                 pycodestyle = {
                     maxLineLength = 120,
-                    ignore = {"F841"},
+                    ignore = { "F841" },
                 },
                 pyflakes = { enabled = false },
             }
@@ -485,7 +497,7 @@ cmp.setup {
     },
 }
 
-require("bufferline").setup{
+require("bufferline").setup {
     options = {
         numbers = "ordinal"
     }
@@ -504,5 +516,3 @@ vim.keymap.set("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>")
 vim.keymap.set("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>")
 vim.keymap.set("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>")
 vim.keymap.set("n", "<leader>$", ":BufferLineGoToBuffer -1<CR>")
-
-
