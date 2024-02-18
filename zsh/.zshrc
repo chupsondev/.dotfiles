@@ -17,6 +17,7 @@ export PATH=$PATH:/home/chupson/.spicetify
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/scripts
 export PATH=$PATH:/Users/chupson/Library/Python/3.11/bin
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # Ensure XDG_CONFIG_HOME is set (on macOS specifically, I think it should be set everywhere else already)
 export XDG_CONFIG_HOME="$HOME/.config"
