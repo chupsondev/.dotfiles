@@ -25,6 +25,7 @@ Below is my best attempt at listing all of the things I will have to install for
 - [yabai](https://github.com/koekeishiya/yabai) + [skhd](https://github.com/koekeishiya/skhd)
     - macOS only
 - [kitty](https://github.com/kovidgoyal/kitty)
+- [delta](https://github.com/dandavison/delta)
 - unnecessary (but cool (and without some parts of the config would have to be modified))
     - cowsay
     - pokemon-colorscripts
