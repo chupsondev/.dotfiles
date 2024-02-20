@@ -243,6 +243,7 @@ vim.o.signcolumn = 'yes:2'
 vim.o.completeopt = 'menuone,noselect'
 
 vim.o.spell = true
+vim.o.spelllang = "en_us,pl"
 
 -- Set conceal level for obsidian.nvim, only in markdown files
 local markdown_settings_group = vim.api.nvim_create_augroup('MarkdownSettings', { clear = true })
