@@ -1,13 +1,15 @@
+# Hyper key: ctrl + alt + cmd + shift
+
 #Rotate layout
 ctrl + alt + cmd + shift - r : yabai -m space --rotate 90
 # Balance layout
 ctrl + alt + cmd + shift - g : yabai -m space --balance
 
 # Navigation - Vim Motions
-ctrl - h : yabai -m window --focus west 
-ctrl - l : yabai -m window --focus east
-ctrl - j : yabai -m window --focus south
-ctrl - k : yabai -m window --focus north
+ctrl + alt + cmd + shift - h : yabai -m window --focus west 
+ctrl + alt + cmd + shift - l : yabai -m window --focus east
+ctrl + alt + cmd + shift - j : yabai -m window --focus south
+ctrl + alt + cmd + shift - k : yabai -m window --focus north
 
 # Moving windows
 ctrl + shift - h : yabai -m window --warp west
