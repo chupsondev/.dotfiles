@@ -1,5 +1,6 @@
 [commit]
 	gpgsign = true
+    verbose = true
 [user]
 	email = chupson@chupson.dev
 	name = chupson
