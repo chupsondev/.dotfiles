@@ -25,7 +25,7 @@ config.keys = {
     { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
     { key = '-', mods = 'SUPER', action = act.DecreaseFontSize },
     { key = 'l', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
-    { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
+    { key = 'p', mods = 'SUPER', action = act.ActivateCommandPalette },
     { key = 'q', mods = 'SUPER', action = act.QuitApplication },
     { key = 'v', mods = 'SUPER', action = act.PasteFrom "Clipboard" },
     { key = 'c', mods = 'SUPER', action = act.CopyTo "Clipboard" },
