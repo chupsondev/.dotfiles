@@ -26,9 +26,13 @@ return {
             telescope.setup {
                 defaults = {
                     mappings = {
+                        n = {
+                            ['<c-x>'] = require('telescope.actions').delete_buffer,
+                        },
                         i = {
                             ['<C-u>'] = false,
                             ['<C-d>'] = false,
+                            ['<c-x>'] = require('telescope.actions').delete_buffer,
                         },
                     },
                     vimgrep_arguments = vimgrep_arguments,
