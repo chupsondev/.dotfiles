@@ -13,13 +13,27 @@ return {
             },
         },
         config = function()
-            require('telescope').setup {
+            local telescope = require('telescope')
+            local telescopeConfig = require("telescope.config")
+
+            local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+            -- I want to search in hidden/dot files.
+            table.insert(vimgrep_arguments, "--hidden")
+            -- I don't want to search in the `.git` directory.
+            table.insert(vimgrep_arguments, "--glob")
+            table.insert(vimgrep_arguments, "!**/.git/*")
+
+            telescope.setup {
                 defaults = {
                     mappings = {
                         i = {
                             ['<C-u>'] = false,
                             ['<C-d>'] = false,
                         },
+                    },
+                    vimgrep_arguments = vimgrep_arguments,
+                    layout_config = {
+                        horizontal = { preview_width = 0.6 }
                     },
                 },
                 pickers = {
@@ -46,7 +60,7 @@ return {
 
                 -- Find the Git root directory from the current file's path
                 local git_root = vim.fn.systemlist('git -C ' ..
-                vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+                    vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
                 if vim.v.shell_error ~= 0 then
                     print 'Not a git repository. Searching on current working directory'
                     return cwd
