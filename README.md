@@ -26,6 +26,8 @@ Below is my best attempt at listing all of the things I will have to install for
     - macOS only
 - [kitty](https://github.com/kovidgoyal/kitty)
 - [delta](https://github.com/dandavison/delta)
+- [gitstatus](https://github.com/romkatv/gitstatus)
+    - `git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus`
 - unnecessary (but cool (and without some parts of the config would have to be modified))
     - cowsay
     - pokemon-colorscripts
