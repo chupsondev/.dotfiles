@@ -32,6 +32,7 @@ config.keys = {
     { key = 'Paste', mods = 'NONE', action = act.PasteFrom "Clipboard" },
     { key = 'Copy', mods = 'NONE', action = act.CopyTo "Clipboard" },
     { key = 'm', mods = 'SUPER', action = act.Hide },
+    { key = 'f', mods = 'SUPER', action = act.ToggleFullScreen },
 }
 
 
