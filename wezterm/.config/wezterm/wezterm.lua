@@ -15,7 +15,10 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 
 config.window_padding = {
+    top = 0,
     bottom = 0,
+    left = 8,
+    right = 8,
 }
 
 -- Disable default keybindings, and only enable a few
