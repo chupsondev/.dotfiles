@@ -29,6 +29,8 @@ vim.o.incsearch = true
 vim.wo.cursorline = true
 vim.wo.cursorlineopt = "number"
 
+vim.o.clipboard = "unnamedplus"
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 

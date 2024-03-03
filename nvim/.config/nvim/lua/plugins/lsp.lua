@@ -67,7 +67,9 @@ return {
                 rust_analyzer = {},
                 lua_ls = {
                     Lua = {
-                        workspace = { checkThirdParty = false },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
                         telemetry = { enable = false },
                     },
                 },
