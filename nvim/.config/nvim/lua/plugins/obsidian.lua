@@ -33,7 +33,7 @@ return {
                 pattern = "markdown",
                 callback = function()
                     vim.cmd [[setlocal syntax=markdown]]
-                    vim.cmd [[setlocal conceallevel=1]]
+                    vim.cmd [[setlocal conceallevel=2]]
                 end,
                 group = markdown_settings_group,
             })
