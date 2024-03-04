@@ -20,14 +20,9 @@ return {
             }, { mode = 'v' })
         end
     },
-
-    {
-        enabled = false,
-        'folke/neodev.nvim',
-        opts = {}
-    },
     {
         "folke/todo-comments.nvim",
+        event = "VimEnter",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {}
     },
