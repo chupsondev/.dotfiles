@@ -20,7 +20,8 @@
 export BG0=0xff282828
 export BG1=0xff3c3836
 export WHITE=0xffebdbb2
-
+export ORANGE=0xfffe8019
+export RED=0xffcc241d
 
 export BAR_COLOR=$BG0
 export BAR_BORDER_COLOR=$BG2
