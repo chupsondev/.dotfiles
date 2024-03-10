@@ -46,6 +46,9 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
+vim.o.listchars = "eol:↵,tab:▷ ,extends:◣,precedes:◢,trail:␣,nbsp:○"
+vim.o.list = true
+
 vim.o.scrolloff = 5
 
 vim.o.signcolumn = 'yes:2'
