@@ -5,7 +5,10 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 config.color_scheme = 'GruvboxDark'
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
+config.font = wezterm.font_with_fallback {
+    "Input Mono",
+    "Symbols Nerd Font"
+}
 config.font_size = 14
 
 config.window_background_opacity = 0.9
