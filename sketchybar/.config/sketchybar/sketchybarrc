@@ -5,7 +5,7 @@ PLUGIN_DIR="$HOME/.config/sketchybar/plugins/"
 ITEMS_DIR="$HOME/.config/sketchybar/items/"
 
 ICON_FONT="SF Symbols"
-LABEL_FONT="JetBrainsMono Nerd Font"
+LABEL_FONT="InputMono Nerd Font"
 
 PADDING=4
 
@@ -22,7 +22,7 @@ sketchybar --bar    height=30           \
 
 sketchybar --default    updates=when_shown                              \
                         icon.font="$ICON_FONT:SemiBold:13:0"            \
-                        label.font="$LABEL_FONT:SemiBold:13:0"          \
+                        label.font="$LABEL_FONT:Regular:13:0"           \
                         icon.padding_left=$PADDING                      \
                         icon.padding_right=$PADDING                     \
                         label.padding_left=$PADDING                     \
