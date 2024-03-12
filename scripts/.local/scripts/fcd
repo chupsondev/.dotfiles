@@ -5,7 +5,11 @@
 # vim:ft=zsh
 
 function fcd {
-    directories=( $HOME/dev/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ $HOME/.dotfiles )
+    directories=( $HOME/dev/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ $HOME/.dotfiles $HOME/school )
+    for (( i = 1; i <= $#directories; i++ )); do
+        [[ ! -d "${directories[i]}" ]] && unset -v 'directories[$i]'
+    done
+    directories=("${directories[@]}")
     
     picked_dir=$({
         fd --no-ignore --hidden --absolute-path --follow --type directory \
