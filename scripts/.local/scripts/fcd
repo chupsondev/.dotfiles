@@ -17,7 +17,7 @@ function fcd {
 
         fd --no-ignore --hidden --absolute-path --follow --type directory --max-depth 1 \
             . $HOME $HOME/.local;
-    } | fzf-tmux -p --preview 'exa --tree --level=2 --long {}')
+    } | fzf-tmux -p --preview 'exa --tree --level=2 {}')
     
     cd "$picked_dir"
 }
