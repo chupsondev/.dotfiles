@@ -42,7 +42,6 @@ return {
         priority = 1000,
         opts = {
             transparent = false,
-            background = { dark = "dragon", light = "lotus" }
         },
     },
     {
@@ -60,7 +59,15 @@ return {
         priority = 1000,
         lazy = false,
         opts = {
-            styles = { transparency = true }
+            styles = { transparency = false }
         }
+    },
+    {
+        "sainnhe/everforest",
+        priority = 1000,
+        lazy = false,
+        config = function ()
+            vim.api.nvim_set_var("everforest_background", "hard")
+        end
     }
 }
