@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- Colors (per scheme configuration in colors.lua)
-vim.cmd.colorscheme("everforest")
+vim.cmd.colorscheme("rose-pine")
 
 vim.o.hlsearch = false
 vim.o.incsearch = true

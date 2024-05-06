@@ -4,8 +4,7 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
-config.color_scheme_dirs = { "$HOME/.config/wezterm/lua/everforest" }
-config.color_scheme = "Everforest Dark (Hard)"
+config.color_scheme = "rose-pine"
 config.font = wezterm.font_with_fallback {
     "FiraCode Nerd Font",
     "Symbols Nerd Font"
