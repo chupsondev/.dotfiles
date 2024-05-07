@@ -17,11 +17,18 @@
 # export BG2=0x6044475A
 
 # Gruvbox
-export BG0=0xff282828
-export BG1=0xff3c3836
-export WHITE=0xffebdbb2
-export ORANGE=0xfffe8019
-export RED=0xffcc241d
+# export BG0=0xff282828
+# export BG1=0xff3c3836
+# export WHITE=0xffebdbb2
+# export ORANGE=0xfffe8019
+# export RED=0xffcc241d
+#
+# Rose Pine
+export BG0=0xff191724
+export BG1=0xff26233a
+export WHITE=0xffe0def4
+export ORANGE=0xfff6c177
+export RED=0xffeb6f92
 
 export BAR_COLOR=$BG0
 export BAR_BORDER_COLOR=$BG2
@@ -32,3 +39,4 @@ export LABEL_COLOR=$WHITE # Color of all labels
 export POPUP_BACKGROUND_COLOR=$BAR_COLOR
 export POPUP_BORDER_COLOR=$WHITE
 export SHADOW_COLOR=$BLACK
+
