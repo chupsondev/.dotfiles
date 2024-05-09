@@ -67,3 +67,5 @@
 	paging = always
 	navigate = true
 	features = gruvmax-fang
+[rebase]
+	updateRefs = true
