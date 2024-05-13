@@ -62,11 +62,13 @@ vim.o.spelllang = "en_us,pl"
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set("n", "<leader>p", "\"0p")
-vim.keymap.set("n", "<leader>P", "\"0P")
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"0p")
+vim.keymap.set({ "n", "v" }, "<leader>P", "\"0P")
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+vim.keymap.set('n')
 
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete", silent = true })
 vim.keymap.set("n", "]b", ":bnext<CR>", { desc = "[B]uffer [N]ext", silent = true })
