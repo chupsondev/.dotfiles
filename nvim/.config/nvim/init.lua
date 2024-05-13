@@ -68,8 +68,6 @@ vim.keymap.set({ "n", "v" }, "<leader>P", "\"0P")
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
-vim.keymap.set('n')
-
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete", silent = true })
 vim.keymap.set("n", "]b", ":bnext<CR>", { desc = "[B]uffer [N]ext", silent = true })
 vim.keymap.set("n", "[b", ":bprev<CR>", { desc = "[B]uffer [P]revious", silent = true })
