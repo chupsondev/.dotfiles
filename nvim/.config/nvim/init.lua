@@ -96,9 +96,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
--- For some reason this had some weird stuff going on when it was in its own file, so instead of fixing it I put it back here.
-require("bufferline").setup {
-    options = {
-        numbers = "ordinal"
-    }
-}
