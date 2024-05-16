@@ -74,9 +74,6 @@ vim.keymap.set("n", "<M-right>", "<c-w>5>")
 vim.keymap.set("n", "<M-up>", "<c-w>5+")
 vim.keymap.set("n", "<M-down>", "<c-w>5-")
 
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[B]uffer [D]elete", silent = true })
-vim.keymap.set("n", "]b", ":bnext<CR>", { desc = "[B]uffer [N]ext", silent = true })
-vim.keymap.set("n", "[b", ":bprev<CR>", { desc = "[B]uffer [P]revious", silent = true })
 
 -- dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
