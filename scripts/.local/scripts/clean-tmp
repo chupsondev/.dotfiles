@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+find /tmp -atime +3d -type f -user $USER -exec rm -rf {} +
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    find /private/tmp -atime +3d -type f -user $USER -exec rm -rf {} +
+fi
