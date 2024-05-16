@@ -22,7 +22,7 @@ export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 # Ensure XDG_CONFIG_HOME is set (on macOS specifically, I think it should be set everywhere else already)
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export EDITOR="nvim -u $HOME/.config/nvim/init.lua" 
+export EDITOR="nvim"
 
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=1000000
