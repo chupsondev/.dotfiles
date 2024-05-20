@@ -7,9 +7,6 @@ plugins=(git zsh-autosuggestions sudo web-search vscode)
 
 source $ZSH/oh-my-zsh.sh
 
-# https://github.com/nvbn/thefuck
-eval $(thefuck --alias)
-
 # My aliases
 source ~/.aliasrc
 
@@ -28,6 +25,8 @@ export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=1000000
 export HISTSIZE=1000000
 
+setopt extended_history
+setopt share_history
 
 # Make global settings
 export CXXFLAGS="-std=c++17 -O2 -Wall"
@@ -45,38 +44,7 @@ eval "$(fzf --zsh)"
 # fcd (for more see the file)
 source $HOME/.local/scripts/fcd
 
-setopt extended_history
-setopt share_history
-
 # Keymappings
 bindkey -s "^f" 'tmux-session-manager\n'
 
-
-COWPATH="$HOME/.cowsay/cowfiles"
-# Cow-spoken fortunes every time you open a terminal
-function cowsayfortune {
-    NUMOFCOWS=`cowsay -l | tail -n +2 | wc -w`
-    WHICHCOW=$((RANDOM%$NUMOFCOWS+1))
-    THISCOW=`cowsay -l | tail -n +2 | sed -e 's/\ /\'$'\n/g' | sed $WHICHCOW'q;d'`
-
-    #echo "Selected cow: ${THISCOW}, from ${WHICHCOW}"
-    fortune | cowsay -f $THISCOW -W 100
-}
-
-function randompokemon {
-    pokemon-colorscripts -r --no-title
-}
-
-randompokemon
-# cowsayfortune
-
 export GPG_TTY=$(tty)
-
-# pnpm
-export PNPM_HOME="/Users/chupson/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
