@@ -26,6 +26,7 @@ export EDITOR="nvim"
 
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=1000000
+export HISTSIZE=1000000
 
 
 # Make global settings
