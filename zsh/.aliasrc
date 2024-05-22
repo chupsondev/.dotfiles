@@ -5,6 +5,7 @@ alias cat='bat'
 alias lg='lazygit'
 alias gst='git status'
 alias glog='git log --oneline --graph'
+alias gco='git checkout'
 
 alias ls='exa --icons --header'
 alias lss='ls -s=cr'
