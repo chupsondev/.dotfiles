@@ -32,8 +32,6 @@ create_dev() {
     eval "tmux new-session -ds $1 -c $path"
     eval "tmux splitw -h -t $1:1.1 -c $path"
     eval "tmux selectl -t $1:1.1 main-vertical"
-    eval "tmux splitw -t $1:1.1 -c $path"
-    eval "tmux resize-pane -t $1:1.1 -y 65%"
 }
 
 
