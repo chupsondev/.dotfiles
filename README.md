@@ -3,8 +3,8 @@ A repo for all my dots!
 
 Below is my best attempt at listing all of the things I will have to install for the configured stuff to work, in no particular order. I very well might've missed something.
 - zsh
-- [oh-my-zsh](https://ohmyz.sh/)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 
+    - install in ~/.zsh
 - [thefuck](https://github.com/nvbn/thefuck)
 - [homebrew](https://brew.sh)
     - if on mac, on Linux the pm is already there
@@ -27,7 +27,7 @@ Below is my best attempt at listing all of the things I will have to install for
 - [kitty](https://github.com/kovidgoyal/kitty)
 - [delta](https://github.com/dandavison/delta)
 - [gitstatus](https://github.com/romkatv/gitstatus)
-    - `git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus`
+    - `git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/.zsh/gitstatus`
 - unnecessary (but cool (and without some parts of the config would have to be modified))
     - cowsay
     - pokemon-colorscripts

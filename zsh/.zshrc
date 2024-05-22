@@ -1,16 +1,80 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="chupson"
-
-plugins=(git zsh-autosuggestions sudo web-search vscode)
-
-source $ZSH/oh-my-zsh.sh
-
 # My aliases
 source ~/.aliasrc
 
-export PATH=$PATH:/home/chupson/.spicetify
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=1000000
+export HISTSIZE=1000000
+
+setopt extended_history
+setopt share_history
+
+autoload -U compinit && compinit -u
+autoload -U colors && colors
+
+zstyle ':completion:*' menu select
+bindkey -v
+
+
+# Prompt
+source ~/.zsh/gitstatus/gitstatus.plugin.zsh
+function gitstatus_prompt_update() {
+    emulate -L zsh
+    typeset -g  GITSTATUS_PROMPT=''
+    typeset -gi GITSTATUS_PROMPT_LEN=0
+
+    gitstatus_query 'MY'                  || return 1  # error
+    [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || return 0  # not a git repo
+
+    local p
+    p+="%{$fg_bold[blue]%}("
+
+    local where  # branch name, tag or commit
+    if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+        where=$VCS_STATUS_LOCAL_BRANCH
+    elif [[ -n $VCS_STATUS_TAG ]]; then
+        p+='%f#'
+        where=$VCS_STATUS_TAG
+    else
+        p+='%f@'
+        where=${VCS_STATUS_COMMIT[1,8]}
+    fi
+
+    (( $#where > 32 )) && where[13,-13]="…"  # truncate long branch names and tags
+    p+="%{$fg[red]%}${where//\%/%%}"             # escape %
+
+  # ⇣42 if behind the remote.
+  (( VCS_STATUS_COMMITS_BEHIND )) && p+=" %{$fg[red]%}⇣${VCS_STATUS_COMMITS_BEHIND}"
+  # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
+  (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && p+=" "
+  (( VCS_STATUS_COMMITS_AHEAD  )) && p+="%{$fg[red]%}⇡${VCS_STATUS_COMMITS_AHEAD}"
+
+  p+="%{$fg_bold[blue]%})"
+
+  if [[ $VCS_STATUS_NUM_CONFLICTED -gt 0 || $VCS_STATUS_NUM_STAGED -gt 0 || $VCS_STATUS_NUM_UNSTAGED -gt 0 || $VCS_STATUS_NUM_UNTRACKED -gt 0 ]]; then
+      p+=" %{$fg[yellow]%}✗"
+  fi
+
+  GITSTATUS_PROMPT="${p}%f"
+}
+
+# Start gitstatusd instance with name "MY". The same name is passed to
+# gitstatus_query in gitstatus_prompt_update. The flags with -1 as values
+# enable staged, unstaged, conflicted and untracked counters.
+gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd gitstatus_prompt_update
+setopt no_prompt_bang prompt_percent prompt_subst
+
+
+PROMPT='%{$fg_bold[yellow]%}╭%{$fg_bold[green]%}%n:%{$fg[cyan]%}%2~ ${GITSTATUS_PROMPT}'
+
+PROMPT+='
+%{$fg_bold[yellow]%}╰%(?.%{$fg_bold[yellow]%}.%{$fg_bold[red]%})$%{$reset_color%} ' 
+
+# Plugins
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/scripts
 export PATH=$PATH:/Users/chupson/Library/Python/3.11/bin
@@ -20,13 +84,6 @@ export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export EDITOR="nvim"
-
-export HISTFILE="$HOME/.zsh_history"
-export SAVEHIST=1000000
-export HISTSIZE=1000000
-
-setopt extended_history
-setopt share_history
 
 # Make global settings
 export CXXFLAGS="-std=c++17 -O2 -Wall"
