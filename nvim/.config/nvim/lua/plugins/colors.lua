@@ -59,7 +59,7 @@ return {
         priority = 1000,
         lazy = false,
         opts = {
-            styles = { transparency = false }
+            styles = { transparency = true }
         }
     },
     {
