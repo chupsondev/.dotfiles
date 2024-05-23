@@ -58,15 +58,22 @@ return {
         name = "rose-pine",
         priority = 1000,
         lazy = false,
-        opts = {
-            styles = { transparency = true }
-        }
+        config = function()
+            require("rose-pine").setup({
+                styles = { transparency = true },
+                highlight_groups = {
+                    StatusLine = { fg = "love", bg = "love", blend = 10 },
+                    StatusLineNC = { fg = "subtle", bg = "surface" },
+                },
+            })
+            vim.opt.statusline = " %f %m %r %= %l:%c %p%% ♥ "
+        end
     },
     {
         "sainnhe/everforest",
         priority = 1000,
         lazy = false,
-        config = function ()
+        config = function()
             vim.api.nvim_set_var("everforest_background", "hard")
         end
     }
