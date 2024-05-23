@@ -12,11 +12,12 @@ alias lss='ls -s=cr'
 alias l='ls -lh'
 alias la='ls -lah'
 
+alias ..='cd ..'
+alias md='mkdir'
+
 alias cls='clear'
 
 alias pip='python3 -m pip '
-
-alias icat='kitty +kitten icat'
 
 alias gcd='cd $(git rev-parse --show-toplevel)'
 
