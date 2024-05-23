@@ -3,7 +3,29 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.termguicolors = true
+
 vim.o.background = "dark"
+
+-- This might be a really bad way to do want I'm trying to do, and it might slow down neovim startup times.
+-- If it does, deleting it wouldn't be too bad, and I can always at least try to make it better.
+local function get_appearance()
+    local theme_file = os.getenv("HOME").."/.cache/theme"
+    local f = io.open(theme_file, "rb")
+    if f then f:close() end
+    if f == nil then
+        return 'dark'
+    end
+    local first_line = io.lines(theme_file)()
+    if first_line == 'dark' then
+        return 'dark'
+    elseif first_line == 'light' then
+        return 'light'
+    end
+    return 'dark'
+end
+if get_appearance() == 'light' then
+    vim.o.background = "light"
+end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
