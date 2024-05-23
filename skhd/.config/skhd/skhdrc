@@ -31,9 +31,6 @@ ctrl + alt + cmd + shift - space : yabai -m window --toggle float --grid 4:4:1:1
 ctrl + alt + cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 
-# focus first windows in space - no need to use mouse if somehow nothing is focused
-ctrl + alt + cmd + shift - space : yabai -m window --focus $(yabai -m query --windows --space | jq ".[0].id")
-
 # send window to space
 ctrl + alt + cmd + shift - 1 : yabai -m window --space  1; yabai -m space --focus 1
 ctrl + alt + cmd + shift - 2 : yabai -m window --space  2; yabai -m space --focus 2
