@@ -15,6 +15,19 @@ function indicate_existing_sessions {
     workspaces="${lines[@]#\$'\n'}"
 }
 
+function no_workspace_sessions {
+    local IFS=$'\n'
+    tmux_sessions=$(tmux list-sessions)
+    tmux_sessions=( $tmux_sessions )
+    for session in "${tmux_sessions[@]}"; do
+        session_name=$(echo "$session" | cut -d ':' -f 1 | xargs)
+        if ! echo "$workspaces" | grep -q "$session_name"; then
+            workspaces+=$'\n'
+            workspaces+="$session_name (exists)"
+        fi
+    done
+}
+
 create_session() {
     name=$(echo "$1" |  cut -d' ' -f 1 | xargs)
     path=$(echo "$1" | cut -d " " -f 2 | sed -n 's/.*(\(.*\)).*/\1/p')
@@ -58,6 +71,7 @@ if [[ $# -ge 1 ]]; then
 fi
 
 indicate_existing_sessions
+no_workspace_sessions
 
 # I use the ansi flag because maybe I'll color the workspace lines sometime
 selected=$(echo "$workspaces" | fzf-tmux -p --ansi)
