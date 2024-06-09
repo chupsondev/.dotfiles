@@ -7,6 +7,6 @@ return {
                 show_hidden = true,
             },
         })
-        vim.keymap.set('n', '<leader>ne', ":Oil<CR>", { desc = '[N]etrw [E]xplore', silent = true }) -- It doesn't *actually* open netrw anymore, but that's what it initially stood for and that's what I'm used to
+        vim.keymap.set('n', '-', ":Oil<CR>", { desc = "Open parent directory", silent = true })
     end
 }

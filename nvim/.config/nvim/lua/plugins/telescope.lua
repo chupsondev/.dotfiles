@@ -47,6 +47,26 @@ return {
 
             pcall(require('telescope').load_extension, 'fzf')
 
+            local find_dirs = function(opts)
+                require("telescope.pickers").new({}, {
+                    prompt_title = "Open Directory",
+                    finder = require("telescope.finders").new_table({
+                        results = vim.fn.systemlist("fd . --type d --color never --follow --hidden")
+                    }),
+                    previewer = require("telescope.previewers").vim_buffer_cat.new({}),
+                    sorter = require("telescope.sorters").get_fuzzy_file(),
+                    attach_mappings = function(prompt_bufnr)
+                        require("telescope.actions.set").select:replace(function(_)
+                            local entry = require("telescope.actions.state").get_selected_entry()
+                            require("telescope.actions").close(prompt_bufnr)
+                            local oil = require("oil")
+                            oil.open(entry[1])
+                        end)
+                        return true
+                    end,
+                    }):find()
+            end
+
             -- Telescope live_grep in git root
             -- Function to find the git root directory based on the current buffer's path
             local function find_git_root()
@@ -84,6 +104,10 @@ return {
 
             vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
+
+            vim.keymap.set('n', '<leader>sd', find_dirs, { desc = '[S]earch [D]irectories' })
+
+
             vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
                 { desc = '[?] Find recently opened files' })
             vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers,
@@ -111,8 +135,6 @@ return {
                 { desc = '[S]earch current [W]ord' })
             vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
             vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
-            vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
-                { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
         end
