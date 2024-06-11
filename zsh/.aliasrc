@@ -23,3 +23,9 @@ alias gcd='cd $(git rev-parse --show-toplevel)'
 
 alias pdflatex='pdflatex -output-directory=target'
 alias biber='biber --output-directory=target'
+
+
+# Funny stuff
+alias please='sudo'
+alias fuck='sudo'
+alias fucking='sudo'
