@@ -14,6 +14,9 @@ autoload -U colors && colors
 zstyle ':completion:*' menu select
 bindkey -v
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 # Prompt
 source ~/.zsh/gitstatus/gitstatus.plugin.zsh
@@ -71,10 +74,6 @@ PROMPT='%{$fg_bold[yellow]%}╭%{$fg_bold[green]%}%n:%{$fg[cyan]%}%2~ ${GITSTATU
 PROMPT+='
 %{$fg_bold[yellow]%}╰%(?.%{$fg_bold[yellow]%}.%{$fg_bold[red]%})$%{$reset_color%} ' 
 
-# Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/scripts
 export PATH=$PATH:/Users/chupson/Library/Python/3.11/bin
@@ -105,3 +104,7 @@ source $HOME/.local/scripts/fcd
 bindkey -s "^f" 'tmux-session-manager\n'
 
 export GPG_TTY=$(tty)
+
+# Plugins
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
