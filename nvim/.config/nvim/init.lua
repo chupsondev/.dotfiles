@@ -62,6 +62,11 @@ vim.o.spelllang = "en_us,pl"
 -- Keymaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+vim.keymap.set("n", "<leader>tc", function ()
+    local centred = vim.opt.scrolloff:get() == 999
+    vim.o.scrolloff = centred and 5 or 999
+end)
+
 vim.keymap.set({ "n", "v" }, "<leader>p", "\"0p")
 vim.keymap.set({ "n", "v" }, "<leader>P", "\"0P")
 
