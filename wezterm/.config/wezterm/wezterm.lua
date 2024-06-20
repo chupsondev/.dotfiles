@@ -15,7 +15,7 @@ config.window_background_opacity = 0.9
 
 config.enable_tab_bar = false
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 
 config.window_padding = {
     top = 0,
