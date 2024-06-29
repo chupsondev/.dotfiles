@@ -105,6 +105,13 @@ bindkey -s "^f" 'tmux-session-manager\n'
 
 export GPG_TTY=$(tty)
 
+# If on Linux, set ssh-agent socket to the one started by systemctl
+if [[ $(uname -s) == "Linux" ]]; then
+    SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket; export SSH_AUTH_SOCK;
+fi
+
 # Plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# 
