@@ -69,7 +69,7 @@ add-zsh-hook precmd gitstatus_prompt_update
 setopt no_prompt_bang prompt_percent prompt_subst
 
 
-PROMPT='%{$fg_bold[yellow]%}╭%{$fg_bold[green]%}%n:%{$fg[cyan]%}%2~ ${GITSTATUS_PROMPT}'
+PROMPT='%{$fg_bold[yellow]%}╭%{$fg_bold[green]%}%n@%m:%{$fg[cyan]%}%2~ ${GITSTATUS_PROMPT}'
 
 PROMPT+='
 %{$fg_bold[yellow]%}╰%(?.%{$fg_bold[yellow]%}.%{$fg_bold[red]%})$%{$reset_color%} ' 
