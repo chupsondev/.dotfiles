@@ -26,6 +26,8 @@ alias biber='biber --output-directory=target'
 
 alias less='less -r'
 
+alias ff=fastfetch
+
 
 # Funny stuff
 alias please='sudo'
