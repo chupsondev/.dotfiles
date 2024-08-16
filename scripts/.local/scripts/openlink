@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    *mkv|*mp4|*webm|*youtube.com*|*youtu.be*)
+        mpv "$1" ;;
+    *jpg|*jpeg|*png|*gif|*bmp|*webp|*tiff|*tif|*svg|*ico)
+        curl -sL "$1" | imv - ;;
+    *)
+        brave "$1"
+esac
