@@ -7,9 +7,11 @@ config.term = "wezterm"
 config.color_scheme = "rose-pine"
 config.font = wezterm.font_with_fallback {
     "FiraCode Nerd Font",
-    "Symbols Nerd Font"
+    "Symbols Nerd Font",
+    "Font Awesome 6 Free",
+    "Font Awesome 6 Brands"
 }
-config.font_size = 14
+config.font_size = 12
 
 config.window_background_opacity = 0.9
 
@@ -20,8 +22,8 @@ config.window_decorations = "NONE"
 config.window_padding = {
     top = 0,
     bottom = 0,
-    left = 8,
-    right = 8,
+    left = 4,
+    right = 4,
 }
 
 -- Disable default keybindings, and only enable a few
@@ -39,6 +41,17 @@ config.keys = {
     { key = 'Paste', mods = 'NONE',       action = act.PasteFrom "Clipboard" },
     { key = 'Copy',  mods = 'NONE',       action = act.CopyTo "Clipboard" },
     { key = 'f',     mods = 'SUPER',      action = act.ToggleFullScreen },
+
+    { key = ')',     mods = 'CTRL|SHIFT',      action = act.ResetFontSize },
+    { key = '+',     mods = 'CTRL|SHIFT',      action = act.IncreaseFontSize },
+    { key = '_',     mods = 'CTRL|SHIFT',      action = act.DecreaseFontSize },
+    { key = 'p',     mods = 'CTRL|SHIFT',      action = act.ActivateCommandPalette },
+    { key = 'q',     mods = 'CTRL|SHIFT',      action = act.QuitApplication },
+    { key = 'v',     mods = 'CTRL|SHIFT',      action = act.PasteFrom "Clipboard" },
+    { key = 'c',     mods = 'CTRL|SHIFT',     action = act.CopyTo "Clipboard" },
+    { key = 'Paste', mods = 'CTRL|SHIFT',       action = act.PasteFrom "Clipboard" },
+    { key = 'Copy',  mods = 'CTRL|SHIFT',       action = act.CopyTo "Clipboard" },
+    { key = 'f',     mods = 'CTRL|SHIFT',      action = act.ToggleFullScreen },
 }
 
 
