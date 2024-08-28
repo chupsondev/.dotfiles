@@ -8,8 +8,6 @@ config.color_scheme = "rose-pine"
 config.font = wezterm.font_with_fallback {
     "FiraCode Nerd Font",
     "Symbols Nerd Font",
-    "Font Awesome 6 Free",
-    "Font Awesome 6 Brands"
 }
 config.font_size = 12
 
