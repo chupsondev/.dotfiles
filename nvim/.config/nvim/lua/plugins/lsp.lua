@@ -48,6 +48,8 @@ return {
 
             local servers = {
                 clangd = {},
+                zls = {},
+                rust_analyzer = {},
                 pylsp = {
                     pylsp = {
                         configurationSources = { "pycodestyle", "flake8" },
@@ -65,7 +67,6 @@ return {
                         }
                     }
                 },
-                rust_analyzer = {},
                 lua_ls = {
                     Lua = {
                         workspace = {
