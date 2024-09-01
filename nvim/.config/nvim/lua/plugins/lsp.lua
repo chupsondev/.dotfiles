@@ -40,6 +40,11 @@ return {
                 vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
                     vim.lsp.buf.format()
                 end, { desc = 'Format current buffer with LSP' })
+
+                nmap('<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+                    '[T]oggle [I]nlay hints')
+                vim.lsp.inlay_hint.enable()
+
             end
 
 
