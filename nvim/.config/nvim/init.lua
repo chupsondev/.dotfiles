@@ -49,6 +49,10 @@ vim.o.expandtab = true
 vim.o.listchars = "eol:↵,tab:▷ ,extends:◣,precedes:◢,trail:␣,nbsp:○"
 vim.o.list = true
 
+-- Status line including current git branch from vim-fugitive. I'm assuming it's installed because why would I not install it
+-- The heart comes from Rose Pine's status line, and since I got used to it I'm keeping it
+vim.opt.statusline = " %f %m %r %{FugitiveStatusline()} %= %l:%c %p%% ♥ "
+
 vim.o.scrolloff = 5
 
 vim.o.signcolumn = 'yes:2'

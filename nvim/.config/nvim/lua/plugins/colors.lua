@@ -66,7 +66,6 @@ return {
                     StatusLineNC = { fg = "subtle", bg = "surface" },
                 },
             })
-            vim.opt.statusline = " %f %m %r %= %l:%c %p%% ♥ "
         end
     },
     {
