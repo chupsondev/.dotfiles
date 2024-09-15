@@ -5,6 +5,7 @@ return {
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
             { 'j-hui/fidget.nvim',       opts = {} },
+            'stevearc/conform.nvim',
         },
         config = function()
             local on_attach = function(_, bufnr)
@@ -35,11 +36,6 @@ return {
                 nmap('<leader>wl', function()
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                 end, '[W]orkspace [L]ist Folders')
-
-                nmap('<leader>f', vim.lsp.buf.format, '[F]ormat Buffer (with LSP)')
-                vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-                    vim.lsp.buf.format()
-                end, { desc = 'Format current buffer with LSP' })
 
                 nmap('<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
                     '[T]oggle [I]nlay hints')
@@ -101,6 +97,21 @@ return {
                     }
                 end,
             }
+
+            local conform = require('conform')
+            conform.setup {
+                formatters_by_ft = {
+                    rust = { 'rustfmt' },
+                    zig = { 'zigfmt' }
+                },
+            }
+
+            vim.keymap.set('n', '<leader>f', function()
+                conform.format({
+                    bufnr = vim.fn.bufnr(),
+                    lsp_format = 'fallback'
+                })
+            end, { desc = '[F]ormat Buffer' })
         end
     },
 
