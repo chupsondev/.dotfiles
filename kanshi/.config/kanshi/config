@@ -1,0 +1,7 @@
+profile Laptop {
+    output eDP-1 enable
+}
+profile Station {
+    output eDP-1 disable
+    output "LG Electronics LG HDR 4K 305MAUA94A74" enable
+}
