@@ -102,7 +102,8 @@ return {
             conform.setup {
                 formatters_by_ft = {
                     rust = { 'rustfmt' },
-                    zig = { 'zigfmt' }
+                    zig = { 'zigfmt' },
+                    bib = { 'bibtex-tidy' },
                 },
             }
 
