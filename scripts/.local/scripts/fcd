@@ -5,7 +5,7 @@
 # vim:ft=zsh
 
 function fcd {
-    search_directories=( $HOME/dev/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ $HOME/.dotfiles $HOME/school )
+    search_directories=( $HOME/devel/ $HOME/.config/ $HOME/.local/scripts $HOME/.local/bin $HOME/Obsidian/ $HOME/projects $HOME/wallpapers/ $HOME/Downloads/ $HOME/.dotfiles $HOME/school )
     directories=()
     for (( i = 1; i <= $#search_directories; i++ )); do
         [[ -d "${search_directories[i]}" ]] && directories+=("${search_directories[i]}")
