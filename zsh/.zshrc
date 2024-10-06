@@ -89,6 +89,9 @@ export EDITOR="nvim"
 export CXXFLAGS="-std=c++17 -O2 -Wall"
 export CXX=g++
 
+
+export SWWW_TRANSITION=none
+
 # fzf
 export FZF_TMUX_OPTS='-p'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'

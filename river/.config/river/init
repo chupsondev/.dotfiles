@@ -106,7 +106,9 @@ riverctl input "pointer-1133-16514-Logitech_MX_Master_3" scroll-factor 2
 
 riverctl keyboard-layout pl
 
-swaybg -i /home/chupson/wallpapers/rose-pine/moon.jpg -m fill &
+# swaybg -i /home/chupson/wallpapers/rose-pine/moon.jpg -m fill &
+swww-daemon &
+swww img /home/chupson/wallpapers/thtaida1fk0b1.jpg -t none
 
 # swayidle -w \
 #          before-sleep 'swaylock -f -C ~/.local/share/themes/rose-pine/swaylock/rose-pine --clock --indicator' &
@@ -148,7 +150,7 @@ wideriver \
 
 
 
-dunst &
+mako &
 waybar &
 gammastep-indicator &
 mullvad-vpn &
