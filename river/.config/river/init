@@ -5,7 +5,7 @@
 
 waylock_command="waylock -init-color 0x191724 -fail-color 0xeb6f92 -input-color 0x6e6a86 -submit-color 0x908caa"
 
-riverctl map normal Super+Shift Return spawn wezterm
+riverctl map normal Super+Shift Return spawn kitty
 
 riverctl map normal Super Q close
 
