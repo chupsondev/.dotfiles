@@ -1,0 +1,81 @@
+@import "./rose-pine.css";
+
+* {
+    font-size: 12px;
+    font-family: "FiraCode Nerd Font";
+}
+
+window#waybar {
+    background: @base;
+    color: @text;
+}
+
+
+
+#workspaces button {
+    padding: 0 2px;
+    color: @subtle;
+}
+#workspaces button.visible {
+    color: @love;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #1a1a1a;
+    border: #1a1a1a;
+    padding: 0 3px;
+}
+
+
+
+#tags button {
+    padding: 0 1px;
+    color: @subtle;
+}
+
+#tags button.focused {
+    color: @love;
+}
+
+#tags button:not(.occupied):not(.focused) {
+    opacity: 0.7;
+}
+
+#layout {
+    color: @subtle;
+    padding: 10px;
+}
+
+#window {
+    padding: 0 8px;
+}
+
+#custom-rss {
+    color: @iris;
+}
+#pulseaudio {
+    color: @gold;
+}
+#memory {
+    color: @rose;
+}
+#cpu {
+    color: @pine;
+}
+#battery {
+    color: @foam;
+}
+#disk {
+    color: @iris;
+}
+
+#clock,
+#custom-rss,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk {
+    padding: 0 10px;
+}

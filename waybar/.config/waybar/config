@@ -1,0 +1,115 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    "modules-left": [
+        "river/tags",
+        "river/layout",
+        "river/window"
+    ],
+    "modules-center": [
+        "clock#1",
+        "clock#2",
+        "clock#3",
+    ],
+    "modules-right": [
+        "custom/rss",
+        "pulseaudio",
+        "memory",
+        "cpu",
+        "battery",
+        "disk",
+        "tray"
+    ],
+
+    "custom/rss": {
+        "exec": "~/.config/waybar/rss.sh",
+        "on-click": "setsid -f /usr/bin/newsboat -x reload",
+        "format": "  {}",
+        "interval": 60,
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}"
+    },
+
+    "river/tags": {
+        "num-tags": 9,
+        "disable-click": true,
+    },
+
+    "river/window": {
+        "format": "{}",
+        "max-length": 40
+    },
+
+    "clock": {
+    },
+
+    "clock#1": {
+        "format": "{:%a}",
+        "tooltip": false
+    },
+    "clock#2": {
+        "timezone": "Europe/Warsaw",
+        "format": "{:%H:%M}",
+        "tooltip": false
+    },
+    "clock#3": {
+        "format": "{:%d %b (%m)}",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume:2}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": "MUTE",
+        "format-icons": {
+            "headphones": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "Mem {}%"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage:2}%"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "disk": {
+        "interval": 5,
+        "format": "Disk {percentage_used:2}%",
+        "path": "/"
+    },
+    "tray": {
+        "icon-size": 20
+    }
+}
+// vim:ft=json
