@@ -8,6 +8,11 @@ return {
             'stevearc/conform.nvim',
         },
         config = function()
+            local border_opts = { border = "single" }
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, border_opts)
+            vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, border_opts)
+            vim.diagnostic.config({ float = border_opts })
+
             local on_attach = function(_, bufnr)
                 local nmap = function(keys, func, desc)
                     if desc then
@@ -40,7 +45,6 @@ return {
                 nmap('<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
                     '[T]oggle [I]nlay hints')
                 vim.lsp.inlay_hint.enable()
-
             end
 
 
